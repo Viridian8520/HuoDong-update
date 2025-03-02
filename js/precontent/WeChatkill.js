@@ -11412,7 +11412,12 @@ const packs = function () {
             else if (WeChatkill.translate[i].indexOf('极') == 0) WeChatkill.translate[i + '_prefix'] = '极';
         }
         if (i.startsWith('wechat_') && !WeChatkill.character[i][4].some(tag => typeof tag == 'string' && tag.startsWith('die:'))) WeChatkill.character[i][4].push('die:' + i.slice(7));
-        WeChatkill.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        // taffy: 注释WeChatkill.js原版代码
+        // WeChatkill.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
+        // taffy: 修复Web端武将图片不可见问题
+        WeChatkill.character[i][4].push('ext:活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
     }
     lib.namePrefix.set('极', {
         color: '#fdd559',

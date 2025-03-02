@@ -599,7 +599,12 @@ const packs = function () {
     };
     for (var i in NianShouCharacter.character) {
         if (!NianShouCharacter.character[i][4]) NianShouCharacter.character[i][4] = [];
-        NianShouCharacter.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        // taffy: 注释NianShouCharacter.js原版代码
+        // NianShouCharacter.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
+        // taffy: 修复Web端武将图片不可见问题
+        NianShouCharacter.character[i][4].push('ext:活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
     }
     lib.config.all.characters.push('NianShouCharacter');
     lib.config.all.sgscharacters.push('NianShouCharacter');

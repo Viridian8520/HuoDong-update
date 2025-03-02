@@ -1507,7 +1507,12 @@ const packs = function () {
     };
     for (var i in hezongkangqincharacter.character) {
         if (!hezongkangqincharacter.character[i][4]) hezongkangqincharacter.character[i][4] = [];
-        hezongkangqincharacter.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        // taffy: 注释hezongkangqincharacter.js原版代码
+        // hezongkangqincharacter.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
+        // taffy: 修复Web端武将图片不可见问题
+        hezongkangqincharacter.character[i][4].push('ext:活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
     }
     game.bolAddGroupNature(['daqin', '秦'], [255, 165, 0]);
     lib.config.all.characters.push('hezongkangqincharacter');

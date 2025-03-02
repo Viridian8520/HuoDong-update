@@ -78,13 +78,13 @@ const packs = function () {
             bfake_shen_zhangjiao: ['male', 'shen', 3, ['bolyifu', 'boltianjie'], ['qun', 'character:shen_zhangjiao']],
             bfake_huanwen: ['male', 'jin', 3, ['bolyuba', 'bolxingjiang']],
             //憋笑--牢戏专属
-            smile1: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile1.jpg']],
-            smile2: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile2.jpg']],
-            smile3: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile3.jpg']],
-            smile4: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile4.jpg']],
-            smile5: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile5.jpg']],
-            smile6: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile6.jpg']],
-            smile7: ['', '', 0, [], ['unseen', 'forbidai', ((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/default/smile7.jpg']],
+            smile1: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile1.jpg']],
+            smile2: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile2.jpg']],
+            smile3: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile3.jpg']],
+            smile4: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile4.jpg']],
+            smile5: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile5.jpg']],
+            smile6: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile6.jpg']],
+            smile7: ['', '', 0, [], ['unseen', 'forbidai', 'ext:活动武将/image/default/smile7.jpg']],
         },
         characterIntro: {
             get bilibili_wangwang() {
@@ -11102,7 +11102,12 @@ const packs = function () {
     for (var i in huodongcharacter.character) {
         if (!huodongcharacter.character[i][4]) huodongcharacter.character[i][4] = [];
         //if(huodongcharacter.characterSort.huodongcharacter.Cothers.includes(i)&&lib.config.connect_nickname!=='萌新（转型中）') huodongcharacter.character[i][4].push('unseen');
-        huodongcharacter.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        // taffy: 注释huodongcharacter.js原版代码
+        // huodongcharacter.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
+        // taffy: 修复Web端武将图片不可见问题
+        huodongcharacter.character[i][4].push('ext:活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
         if (!lib.config.extension_活动武将_DanJi && i.indexOf('DJ_') == 0) delete huodongcharacter.character[i];
         if (!lib.config.extension_活动武将_SCS && i.indexOf('biliscs_') != -1) delete huodongcharacter.character[i];
     }

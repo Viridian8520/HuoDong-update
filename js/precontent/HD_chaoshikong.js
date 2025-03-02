@@ -982,7 +982,12 @@ const packs = function () {
     for (var i in HD_chaoshikong.character) {
         if (!HD_chaoshikong.character[i][4]) HD_chaoshikong.character[i][4] = [];
         if (HD_chaoshikong.translate[i] && HD_chaoshikong.translate[i].indexOf('密探·') == 0) HD_chaoshikong.translate[i + '_ab'] = HD_chaoshikong.translate[i].slice(HD_chaoshikong.translate[i].indexOf('密探·') + 3, HD_chaoshikong.translate[i].length);
-        HD_chaoshikong.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        // taffy: 注释HD_chaoshikong.js原版代码
+        // HD_chaoshikong.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
+        // taffy: 修复Web端武将图片不可见问题
+        HD_chaoshikong.character[i][4].push('ext:活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
     }
     lib.config.all.characters.push('HD_chaoshikong');
     lib.config.all.sgscharacters.push('HD_chaoshikong');

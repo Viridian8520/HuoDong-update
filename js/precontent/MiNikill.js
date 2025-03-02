@@ -381,7 +381,7 @@ const packs = function () {
         },
         characterSubstitute: {
             Mbaby_tunxingmenglix: [
-                ['Mbaby_tunxingmengli', [((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/Mbaby_tunxingmengli.jpg']],
+                ['Mbaby_tunxingmengli', ['ext:活动武将/image/character/Mbaby_tunxingmengli.jpg']],
             ],
         },
         card: {
@@ -33836,7 +33836,12 @@ const packs = function () {
             else if (MiNikill.translate[i].indexOf('战') == 0) MiNikill.translate[i + '_prefix'] = '战';
         }
         if (i.startsWith('Mbaby_') && !MiNikill.character[i][4].some(tag => typeof tag == 'string' && tag.startsWith('die:'))) MiNikill.character[i][4].push('die:' + i.slice(6));
-        MiNikill.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        // taffy: 注释MiNikill.js原版代码
+        // MiNikill.character[i][4].push(((lib.device || lib.node) ? 'ext:' : 'db:extension-') + '活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
+        // taffy: 修复Web端武将图片不可见问题
+        MiNikill.character[i][4].push('ext:活动武将/image/character/' + i + '.jpg');
+        /* taffy分界线 */
     }
     lib.namePrefix.set('喵', {
         color: '#fdd559',
